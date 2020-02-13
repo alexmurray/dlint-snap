@@ -1,0 +1,22 @@
+name: dlint
+base: core18
+version: 0.10.1
+summary: A tool for encouraging best and secure Python coding practices
+description: |
+  Dlint is a tool for encouraging best coding practices and helping ensure
+  Python code is secure.
+confinement: strict
+grade: stable
+
+apps:
+  dlint:
+    command: python3 -m flake8 --select=DUO
+    plugs:
+      - home
+
+parts:
+  dlint:
+    plugin: python
+    python-packages:
+      - dlint==$SNAPCRAFT_PROJECT_VERSION
+      - flake8
