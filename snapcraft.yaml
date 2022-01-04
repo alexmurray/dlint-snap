@@ -10,7 +10,7 @@ grade: stable
 
 apps:
   dlint:
-    command: python3 -m flake8 --select=DUO
+    command: bin/snapcraft-preload python3 -m flake8 --select=DUO
     plugs:
       - home
 
@@ -20,3 +20,11 @@ parts:
     python-packages:
       - dlint==$SNAPCRAFT_PROJECT_VERSION
       - flake8
+
+  snapcraft-preload:
+    source: https://github.com/sergiusens/snapcraft-preload.git
+    plugin: cmake
+    build-packages:
+      - on amd64:
+          - gcc-multilib
+          - g++-multilib
