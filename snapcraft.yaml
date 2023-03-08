@@ -1,6 +1,6 @@
 name: dlint
 base: core18
-version: 0.10.2
+version: 0.14.0
 summary: A tool for encouraging best and secure Python coding practices
 description: |
   Dlint is a tool for encouraging best coding practices and helping ensure
