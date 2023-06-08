@@ -1,5 +1,5 @@
 name: dlint
-base: core18
+base: core20
 version: 0.14.0
 summary: A tool for encouraging best and secure Python coding practices
 description: |
@@ -10,7 +10,7 @@ grade: stable
 
 apps:
   dlint:
-    command: bin/snapcraft-preload python3 -m flake8 --select=DUO
+    command: bin/snapcraft-preload $SNAP/bin/python3 -m flake8 --select DUO
     plugs:
       - home
 
@@ -24,7 +24,11 @@ parts:
   snapcraft-preload:
     source: https://github.com/sergiusens/snapcraft-preload.git
     plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/
     build-packages:
       - on amd64:
           - gcc-multilib
           - g++-multilib
+    stage-packages:
+      - lib32stdc++6
